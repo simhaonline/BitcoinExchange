@@ -1,0 +1,59 @@
+<header>
+  <h1 class = "header-title animation">L⚡︎ghtning SystemTrade (@bitFlyer)</h1>
+</header>
+<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="jpy" background-color="#ffffff" locale="ja"></coingecko-coin-price-marquee-widget>
+<div class = "main">
+  <div class = "main__top">
+    <canvas id="myChart" width="900" height="450"></canvas>
+    <script>draw_graph();</script>
+  </div>
+  <div class = "main__bottom">
+    <table class="table">
+      <tr><th>STATUS</th><th>DATE</th><th>BUY/SELL</th><th>SIZE</th><th>PRICE</th></tr>
+      <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class = "side">
+  <div class = "money-board">
+    <ul>
+      <li>総資産残高（JPY）：<%= @money %>円</li>
+      <li>現在の1BTC価格（JPY）：<%= @price %>円</li>
+    </ul>
+  </div>
+  <div class = "order-board">
+    <%= form_for(@trade) do |f| %>
+      <h1 class = "order-title__red">BUY</h1>
+      <%= f.hidden_field :side, value: "BUY" %>
+      <div class = "input-box">
+        <label>数量：</label>
+        <%= f.number_field :size, step: :any, class: "input-box__field" %>
+      </div>
+      <div class = "input-box">
+        <label>価格：</label>
+        <%= f.number_field :price, class: "input-box__field" %>
+      </div>
+      <div class = "order-box">
+        <%= f.submit '注文', class: 'order-btn__red' %>
+      </div>
+    <% end %>
+    <%= form_for(@trade) do |f| %>
+      <h1 class = "order-title__blue">SELL</h1>
+      <%= f.hidden_field :side, value: "SELL" %>
+      <div class = "input-box">
+        <label>数量：</label>
+        <%= f.number_field :size, step: :any, class: "input-box__field" %>
+      </div>
+      <div class = "input-box">
+        <label>価格：</label>
+        <%= f.number_field :price, class: "input-box__field" %>
+      </div>
+      <div class = "order-box">
+        <%= f.submit '注文', class: 'order-btn__blue' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
