@@ -6,8 +6,8 @@ window.draw_graph = ->
     bdColors = new Array(barNum)
     for i in [0...barNum]
         labels[i] = 'data' + i
-        bgColors[i] = 'rgba(75, 192, 192, 0.2)'
-        bdColors[i] = 'rgba(75, 192, 192, 1)'
+        bgColors[i] = 'rgba(135, 206, 250, 0.5)'
+        bdColors[i] = 'rgba(255, 255, 255, 1)'
     myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -17,18 +17,36 @@ window.draw_graph = ->
                 backgroundColor: bgColors,
                 borderColor: bdColors,
                 borderWidth: 1
-            }, {
-                label: 'Line Dataset',
-                data: gon.linedata,
-                type: 'line'
             }],
             labels: labels,
         },
         options: {
             scales: {
                 yAxes: [{
+                    scaleLabel: {
+                        fontColor: "white"
+                    },
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.4)",
+                        zeroLineColor: "white"
+                    },
                     ticks: {
-                        beginAtZero:true
+                        fontColor: "white",
+                        beginAtZero: true,
+                        suggestedMax: 250,
+                        stepSize: 50
+                    }
+                }]
+                xAxes: [{
+                    scaleLabel: {
+                        fontColor: "white"
+                    },
+                    gridLines: {
+                        color: "rgba(255, 255, 255, 0.4)",
+                        zeroLineColor: "white"
+                    },
+                    ticks: {
+                        fontColor: "white"
                     }
                 }]
             }

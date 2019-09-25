@@ -44,7 +44,6 @@ class ApplicationController < ActionController::Base
   end
 
   def order(side,price,size)
-    # binding.pry
     key = ENV['API_KEY']
     secret = ENV['API_SECRET']
 
@@ -101,7 +100,7 @@ class ApplicationController < ActionController::Base
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     response = https.request(options)
-    response.body
+    response_hash = JSON.parse(response.body)
   end
 
   def all_cancel
