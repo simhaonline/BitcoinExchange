@@ -12,8 +12,33 @@
   <coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin" currency="jpy" background-color="#000" locale="ja"></coingecko-coin-price-marquee-widget>
   <div class = "main">
     <div class = "main__top">
-      <canvas id="myChart" width="900" height="450"></canvas>
-      <script>draw_graph();</script>
+      <div class="tradingview-widget-container">
+        <div id="tradingview_cb0fe"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+          {
+            "width": 900,
+            "height": 450,
+            "symbol": "BITFLYER:BTCJPY",
+            "interval": "60",
+            "timezone": "Asia/Tokyo",
+            "theme": "Dark",
+            "style": "2",
+            "locale": "ja",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "withdateranges": true,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "studies": [
+              "BB@tv-basicstudies"
+            ],
+            "container_id": "tradingview_cb0fe"
+          }
+        );
+        </script>
+      </div>
     </div>
     <div class = "main__bottom">
       <table>
@@ -69,10 +94,7 @@
         </div>
       <% end %>
     </div>
-    <%# <button id="#scroll_button">btn</button> %>
     <div class="tradingview-widget-container">
-      <%# <div class="tradingview-widget-container__widget"></div> %>
-      <%# <div class="tradingview-widget-copyright">TradingView提供の<a href="https://jp.tradingview.com/symbols/BITFLYER-BTCJPY/technicals/" rel="noopener" target="_blank"><span class="blue-text">BTCJPYのテクニカル分析</span></a></div> %>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
       {
         "showIntervalTabs": true,

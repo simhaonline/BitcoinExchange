@@ -6,12 +6,6 @@ class TradesController < ApplicationController
     @jpy = get_my_money("JPY")["amount"]
     @btc = get_my_money("BTC")["amount"]
     @orders = order_history
-
-    gon.bardata = []
-    6.times do |i|
-      data = rand(100.0)
-      gon.bardata << data
-    end
   end
 
   def create
@@ -20,11 +14,8 @@ class TradesController < ApplicationController
 
     side = params[:trade][:side]
     price = params[:trade][:price]
-    # price = price.to_i
     size = params[:trade][:size]
-    # size = size.to_f
     order(side,price,size)
-    # order_history[]
     redirect_to root_path
   end
 

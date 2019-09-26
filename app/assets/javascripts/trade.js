@@ -10,7 +10,14 @@ $(window).load(function () {
   $('#loader').delay(600).fadeOut(300);
   $('#wrap').css('display', 'block');
 });
- 
+
+window.onload = function() {
+  if(!window.location.hash) {
+      window.location = window.location + '#loaded';
+      window.location.reload();
+  }
+}
+
 $(function(){
   setTimeout('stopload()',10000);
 });
@@ -20,15 +27,3 @@ function stopload(){
   $('#loader-bg').delay(900).fadeOut(800);
   $('#loader').delay(600).fadeOut(300);
 }
-
-// $(document).on('turbolinks:load', function(){
-//   var position = $("#target").offset().top;
-
-//   $("#scroll_button").click(function(){
-//     $(".tradingview-widget-container").animate({
-//         scrollTop : position
-//     }, {
-//         queue : false
-//     });
-//   });
-// });
