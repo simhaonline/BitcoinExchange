@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: bitcoinapp_production
-  username: bitcoinapp
-  password: <%= ENV['BITCOINAPP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
