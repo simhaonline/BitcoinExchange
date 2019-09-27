@@ -13,30 +13,30 @@ class ApplicationController < ActionController::Base
     response_hash["mid_price"]
   end
 
-  # def get_my_money(coin_name)
-  #   key = ENV['API_KEY']
-  #   secret = ENV['API_SECRET']
+  def get_my_money(coin_name)
+    key = ENV['API_KEY']
+    secret = ENV['API_SECRET']
 
-  #   timestamp = Time.now.to_i.to_s
-  #   method = "GET"
-  #   uri = URI.parse("https://api.bitflyer.com")
-  #   uri.path = "/v1/me/getbalance"
+    timestamp = Time.now.to_i.to_s
+    method = "GET"
+    uri = URI.parse("https://api.bitflyer.com")
+    uri.path = "/v1/me/getbalance"
 
-  #   text = timestamp + method + uri.request_uri
-  #   sign = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, text)
+    text = timestamp + method + uri.request_uri
+    sign = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, text)
 
-  #   options = Net::HTTP::Get.new(uri.request_uri, initheader = {
-  #     "ACCESS-KEY" => key,
-  #     "ACCESS-TIMESTAMP" => timestamp,
-  #     "ACCESS-SIGN" => sign,
-  #   });
+    options = Net::HTTP::Get.new(uri.request_uri, initheader = {
+      "ACCESS-KEY" => key,
+      "ACCESS-TIMESTAMP" => timestamp,
+      "ACCESS-SIGN" => sign,
+    });
 
-  #   https = Net::HTTP.new(uri.host, uri.port)
-  #   https.use_ssl = true
-  #   response = https.request(options)
-  #   response_hash = JSON.parse(response.body)
-  #   response_hash.find {|n| n["currency_code"] == coin_name}
-  # end
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    response = https.request(options)
+    response_hash = JSON.parse(response.body)
+    response_hash.find {|n| n["currency_code"] == coin_name}
+  end
 
   def order(side,price,size)
     key = ENV['API_KEY']
