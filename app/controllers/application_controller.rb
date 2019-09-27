@@ -1,9 +1,4 @@
 class ApplicationController < ActionController::Base
-  require 'net/http'
-  require 'uri'
-  require 'json'
-  require "openssl"
-
 
   def get_price
     uri = URI.parse("https://api.bitflyer.com")
