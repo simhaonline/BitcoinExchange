@@ -3,8 +3,8 @@ class TradesController < ApplicationController
     @trade = Trade.new
 
     @price = get_price
-    @jpy = get_my_money("JPY")["amount"]
-    @btc = get_my_money("BTC")["amount"]
+    # @jpy = get_my_money("JPY")["amount"]
+    # @btc = get_my_money("BTC")["amount"]
     @orders = order_history
   end
 
